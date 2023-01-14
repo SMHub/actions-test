@@ -1,4 +1,4 @@
-name: run main.py
+name: run ui_test.py
 
 on:
   #schedule:
@@ -30,8 +30,7 @@ jobs:
           pip install -r requirements.txt
           
       - name: execute py script # run main.py
-        env:
-          SOME_SECRET: ${{ secrets.SOME_SECRET }}
+
         run: python ui_test.py
 
       - name: Set output
