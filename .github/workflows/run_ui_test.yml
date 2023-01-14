@@ -35,9 +35,6 @@ jobs:
 
         run: python ui_test.py
 
-      - name: Set output
-        if: success() || failure()
-        id: 
           
       - name: commit files
         run: |
