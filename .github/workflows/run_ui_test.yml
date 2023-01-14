@@ -32,7 +32,7 @@ jobs:
       - name: execute py script # run main.py
         env:
           SOME_SECRET: ${{ secrets.SOME_SECRET }}
-        run: python main.py
+        run: python ui_test.py
 
       - name: Set output
         if: success() || failure()
