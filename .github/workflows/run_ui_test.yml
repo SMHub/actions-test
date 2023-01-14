@@ -12,6 +12,8 @@ permissions:
   contents: read
 
 jobs:
+  run:
+  working-directory: ./cvplay   # job level working directory
   build:
     runs-on: ubuntu-latest
     steps:
