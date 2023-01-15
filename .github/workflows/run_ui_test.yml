@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v2 # checkout the repository content to GitHub runner
 
       - name: Install Chrome browser
-        run: sudo apt-get install -y chromium-browser
+        run: sudo apt install chromium-browser
 
       - name: setup python
         uses: actions/setup-python@v4
