@@ -1,13 +1,37 @@
 # selenium 4
 import unittest
-
+import pytest
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.chrome import ChromeType
+from selenium import webdriver
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 import logging
 import logging.handlers
 
-driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.GOOGLE).install())
+
+chrome_options = Options()
+options = [
+"--headless",
+"--disable-gpu",
+"--window-size=1920,1200",
+"--ignore-certificate-errors",
+"--disable-extensions",
+"--no-sandbox",
+"--disable-dev-shm-usage"
+]
+for option in options:
+    chrome_options.add_argument(option)
+
+driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+
+
+
+# driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
 def log_msg(msg_type='i', msg='na'):
     logger = logging.getLogger(__name__)
