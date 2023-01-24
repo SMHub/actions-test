@@ -30,9 +30,6 @@ for option in options:
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
 
-
-# driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-
 def log_msg(msg_type='i', msg='na'):
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.DEBUG)
