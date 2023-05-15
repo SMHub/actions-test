@@ -47,7 +47,7 @@ def log_msg(msg_type='i', msg='na'):
 
 class Test(unittest.TestCase):
 
-    def test_01_get_title(self):
+    def test_01_verify_title(self):
         driver.get('https://www.python.org/')
         title = driver.title
         log_msg(msg=title)
