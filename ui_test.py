@@ -50,9 +50,9 @@ class Test(unittest.TestCase):
     def test_01_verify_title(self):
         driver.get('https://www.python.org/')
         title = driver.title
-        log_msg(msg=title)
+        log_msg(msg='Page loaded:'+title)
         driver.quit()
-        print(title)
+        print('Page loaded:', title)
         assert 'Python.org' in title
 
 

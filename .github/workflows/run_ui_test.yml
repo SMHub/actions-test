@@ -35,7 +35,7 @@ jobs:
           
       - name: execute py script # run test script
 
-        run: pytest --html=report.html --self-contained-html
+        run: pytest --html=report.html --csv report.csv
 
           
       - name: commit files
@@ -45,9 +45,23 @@ jobs:
           git add -A
           git diff-index --quiet HEAD || (git commit -a -m "updated logs" --allow-empty)
           
-      - name: Upload Artifact
+      - name: Upload HTML Report
         uses: actions/upload-artifact@v3
         with:
-            name: my-artifact
+            name: HTML Report
             path: report.html
             retention-days: 5
+
+      - name: Upload CSV Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: CSV Report
+          path: report.csv
+          retention-days: 5
+
+      - name: Upload Log
+        uses: actions/upload-artifact@v3
+        with:
+          name: Test Log
+          path: status.log
+          retention-days: 15
