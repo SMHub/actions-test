@@ -13,7 +13,7 @@ chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.GOOGLE).inst
 
 chrome_options = Options()
 options = [
-
+"--headless",
 "--disable-gpu",
 "--window-size=1920,1200",
 "--ignore-certificate-errors",
@@ -58,8 +58,6 @@ class Test(unittest.TestCase):
         """ Verify Browser Title as Google2 STEP: Go to app url, read title """
         driver.get('http://www.google.com')
         self.assertIn('Google2', driver.title)
-
-
 
 
 
