@@ -1,13 +1,10 @@
 # selenium 4
 import unittest
-import pytest
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.chrome import ChromeType
+from selenium.webdriver.common.by import By
 from selenium import webdriver
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 import logging
 import logging.handlers
@@ -47,6 +44,17 @@ def log_msg(msg_type='i', msg='na'):
 
 class Test(unittest.TestCase):
 
+    # def screenshot_on_fail(func):
+    #     def wrapper(arg):
+    #         try:
+    #             func(arg)
+    #         except:
+    #             print("Test failed", "{0}".format(func.__name__))
+    #             driver.save_screenshot("{0}".format(func.__name__))
+    #             raise
+    #
+    #     return wrapper
+
     def test_01_verify_title(self):
         driver.get('https://www.python.org/')
         title = driver.title
@@ -54,6 +62,17 @@ class Test(unittest.TestCase):
         driver.quit()
         print('Page loaded:', title)
         assert 'Python.org' in title
+
+    def test_01_verify_title(self):
+        driver.get('https://www.python.org/')
+        title = driver.title
+        log_msg(msg='Page loaded:'+title)
+        driver.quit()
+        print('Page loaded:', title)
+        assert 'Python.org' in title
+
+
+
 
 
 if __name__ == '__main__':

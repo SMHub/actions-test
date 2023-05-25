@@ -3,4 +3,3 @@ selenium
 webdriver-manager
 pytest
 pytest-html
-pytest-csv
