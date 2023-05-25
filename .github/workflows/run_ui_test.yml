@@ -35,7 +35,7 @@ jobs:
           
       - name: execute py script # run test script
 
-        run: python ui_test.py
+        run: pytest --html=report.html --self-contained-html
 
           
       - name: commit files
@@ -45,8 +45,9 @@ jobs:
           git add -A
           git diff-index --quiet HEAD || (git commit -a -m "updated logs" --allow-empty)
           
-#      - name: push changes
-#        uses: ad-m/github-push-action@v0.6.0
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          branch: main
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+            name: my-artifact
+            path: report.html
+            retention-days: 5
