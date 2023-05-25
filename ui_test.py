@@ -44,6 +44,7 @@ def log_msg(msg_type='i', msg='na'):
 
 class Test(unittest.TestCase):
 
+
     def test_01_verify_title(self):
         """ Verify Browser Title as Python.Org STEP: Go to app url, read title """
         driver.get('https://www.python.org/')
