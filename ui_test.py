@@ -44,13 +44,29 @@ def log_msg(msg_type='i', msg='na'):
 
 class Test(unittest.TestCase):
 
+    @classmethod
+    def setUpClass(cls):
+        pass
+
+
+    def setUp(self):
+        print("test started")
+
+    def tearDown(self):
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        driver.quit()
+
+
 
     def test_01_verify_title(self):
         """ Verify Browser Title as Python.Org STEP: Go to app url, read title """
         driver.get('https://www.python.org/')
         title = driver.title
         log_msg(msg='Page loaded:'+title)
-        driver.quit()
+
         print('Page loaded:', title)
         assert 'Python.org' in title
 
@@ -58,6 +74,7 @@ class Test(unittest.TestCase):
     def test_02_page_title(self):
         """ Verify Browser Title as Google2 STEP: Go to app url, read title """
         driver.get('http://www.google.com')
+        log_msg(msg='Page loaded:' + driver.title)
         self.assertIn('Google2', driver.title)
 
 
