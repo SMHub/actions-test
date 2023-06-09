@@ -129,7 +129,9 @@ class Util:
         self.get_element(locator).send_keys(text)
         print(" entered ", text, "into", locator)
 
-
+    def type_into_text_box(self, pos=1, text='', wait=3):
+        locator = "(//input[@type='text'])[{}]".format(pos)
+        self.type_text(locator, text, wait)
 
     def get_text(self, locator):
         self.highlight(locator)
@@ -139,6 +141,23 @@ class Util:
         driver.quit()
         driver.stop_client()
 
+    def upload_file(self, file_path):
+        # file should be in 'data\asset' directory
+        full_file_path = str(os.getcwd()).split('\\test')[0]+'\\data'+file_path  # '/test' for linux
+        self.type_text("//input[@type='file']", full_file_path, 3, False)
+        print(' - uploaded file', file_path)
+
+    def is_element_present(self, locator):
+        return len(self.get_elements(locator)) > 0
+
+    def select_option(self, option_text):
+        """ opt_loc locator may vary in applications"""
+        try:
+            opt_loc = "//select[@id='options']/option[text()='{}']".format(option_text)
+            self.click(opt_loc, 3)
+            return True
+        except:
+            return "Locator Err"
     # basic functions
     def highlight(self, locator):
         element = self.get_element(locator)
@@ -184,4 +203,20 @@ class Util:
                 self.take_screenshot("{0}".format(func.__name__))
                 raise
         return wrapper
+
+    def safe_str(self, obj):
+        try:
+            return str(obj)
+        except UnicodeEncodeError:
+            return obj.encode('ascii', 'ignore')
+
+    def partial_match(self, expect, actual, condition=""):
+        missing = [item for item in expect if item not in ''.join(map(str, actual))]
+        print("", condition)
+        print('\tExpected:', expect)
+        print('\tActual:', self.safe_str(actual))
+        print('\tMissing:', missing)
+        print('\tChecked', len(expect), 'items')
+        print('\t-------------------------------\n')
+        return missing == []
 

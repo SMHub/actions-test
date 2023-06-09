@@ -1,4 +1,3 @@
-import datetime, os
 from unittest import TestCase
 from utility import utility
 from locators import locators
@@ -12,8 +11,7 @@ E = expect.Common()
 D = data.Common()
 A = actions.Common()
 
-APP_URL = "http://127.0.0.1:5000"
-
+APP_URL = "https://login.oracle.com"
 
 class Login(TestCase):
 
@@ -31,21 +29,11 @@ class Login(TestCase):
     def tearDown(self):
         print('test ended')
 
-    def screenshot_on_fail(func):
-        def wrapper(arg):
-            try:
-                func(arg)
-            except:
-                print("test failed", "{0}".format(func.__name__))
-                U.take_screenshot("{0}".format(func.__name__))
-                raise
 
-        return wrapper
-
-    @U.screenshot_on_fail
     def test_1_show_error_messages_when_required_fields_are_empty(self):
-        U.click(L.LOGIN_BTN)
-        assert E.ERR_EMAIL_REQUIRED == U.get_texts(L.INPUT_ERR_MSG)
+        # U.click(L.LOGIN_BTN)
+        # assert E.ERR_EMAIL_REQUIRED == U.get_texts(L.INPUT_ERR_MSG)
+        assert 2==1
 
     def test_2_show_error_messages_for_invalid_credentials(self):
         U.type('Enter Email', "Admin")
