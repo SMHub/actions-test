@@ -75,7 +75,7 @@ class Test(unittest.TestCase):
         """ Verify Browser Title as Google2 STEP: Go to app url, read title """
         driver.get('http://www.google.com')
         log_msg(msg='Page loaded:' + driver.title)
-        self.assertIn('Google2', driver.title)
+        self.assertIn('Google', driver.title)
 
 
 

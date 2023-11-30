@@ -1,8 +1,8 @@
 name: run ui_test.py
 
 on:
-#  schedule:
-#    - cron: '0 0 * * 1' # At 00:00 on Monday
+  schedule:
+    - cron: '0 0 * * 1' # At 00:00 on Monday
   push:
     branches: ["main"]
   pull_request:
